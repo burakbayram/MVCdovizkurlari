@@ -1,0 +1,20 @@
+﻿
+
+@using (Html.BeginForm())
+
+{
+    @Html.TextBox("cins", null, new { @placeHolder = "doviz cinsi" })
+    @Html.TextBox("deger", null, new { @placeHolder = "paramiktari" })
+    if (ViewBag.Total == null)
+    {
+        @Html.TextBox("Total", null, new { @placeHolder = "Total TL" })
+    }
+    else
+    {
+        @Html.TextBox("Total", null, new { @placeHolder = ViewBag.Total+"TL" })
+    }
+
+    <button class="btn btn-primary" >Çevir</button>
+
+
+}

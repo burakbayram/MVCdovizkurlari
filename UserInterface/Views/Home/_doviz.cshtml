@@ -1,0 +1,183 @@
+﻿@using Entity
+@model List<ExchangeRateData>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>TCMB Kurlar Sayfası</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" title="" media="screen" href="/wps/wcm/connect/fb2f24e4-9201-49e6-9129-b1d07e6bb958/bootstrap.min.css?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACEfb2f24e4-9201-49e6-9129-b1d07e6bb958" type="text/css">
+    <script src="/wps/wcm/connect/87ec9e18-034e-4328-ae5c-f0b923c930c1/jquery.min.js?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE87ec9e18-034e-4328-ae5c-f0b923c930c1"></script>
+    <script src="/wps/wcm/connect/68971e5e-6a47-4dc8-a387-553033c45e2a/bootstrap.min.js?MOD=AJPERES&amp;CACHEID=ROOTWORKSPACE68971e5e-6a47-4dc8-a387-553033c45e2a"></script>
+    <style>
+
+        #contentContainer {
+            background: none repeat scroll 0 0 #FFFFFF;
+            margin: 5px 0 0;
+            padding: 5px;
+        }
+
+        #kurlarContainer h1 {
+            color: #7C3348;
+            font-size: 15px;
+            margin: 0;
+            padding: 0;
+            font-family: Tahoma,Geneva,sans-serif;
+        }
+
+        .kurlarTablo {
+            font-family: Tahoma,Geneva,sans-serif;
+            margin: 15px 0px;
+            width: 100%;
+        }
+
+            .kurlarTablo th {
+                background: none repeat scroll 0 0 #ECECEC;
+                border-bottom: 1px solid #CACACA;
+                color: #C16F86;
+                font-size: 11px;
+                letter-spacing: 0.1em;
+                padding: 5px 10px;
+                text-align: left
+            }
+
+        tr:nth-child(even) {
+            background: none repeat scroll 0 0 #FBFBFB;
+        }
+
+        tr:nth-child(odd) {
+            background: none repeat scroll 0 0 #F1F1F1;
+        }
+
+        .kurlarTablo td.para {
+            border-bottom: 1px solid #E4E4E4;
+            border-top: 1px solid #FFFFFF;
+            color: #8A8A8A;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            padding: 5px 10px;
+            width: 11%;
+        }
+
+        .kurlarTablo td.deger {
+            border-bottom: 1px solid #E4E4E4;
+            border-top: 1px solid #FFFFFF;
+            color: #8A8A8A;
+            font-size: 10px;
+            letter-spacing: 0.1em;
+            padding: 5px 20px 5px 5px;
+            font-weight: bold;
+            text-align: left;
+            width: 13%;
+        }
+
+        .kurlarTablo td.efdeger {
+            width: 16%;
+        }
+
+        .kurlarTablo td.kurkodu {
+            width: 15%;
+        }
+
+        .kurlarTablo td.birim {
+            width: 6%;
+        }
+
+        .kurlarTablo td.capraz {
+            text-align: left;
+            width: 45%;
+        }
+
+        .tcmbfont {
+            font-family: Tahoma,Geneva,sans-serif;
+            color: #222222;
+            font-size: 12px;
+        }
+
+        body {
+            font: 11px/18px Georgia, "Times New Roman", Times, serif;
+            color: #747474;
+        }
+
+        caption, th {
+            text-align: left;
+        }
+
+        span.kurgorsel {
+            display: inline-block;
+            height: 100%;
+            width: 16px;
+            padding-right: 3px;
+            margin: auto;
+            background-repeat: no-repeat;
+        }
+
+        .detailContentContainer {
+            padding: 15px 5px 0px 5px;
+        }
+
+
+
+
+        tr {
+            height: 30px;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            min-height: 0.01%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="contentContainer">
+        <div id="kurlarContainer" class="table-responsive">
+            <h1>@ViewBag.doviz Günü  Belirlenen Gösterge Niteliğindeki Türkiye Cumhuriyet Merkez Bankası Kurları</h1>
+            <span class="tcmbfont">Indicative Exchange Rates Announced @ViewBag.doviz by the Central Bank of Turkey</span><br><span class="tcmbfont">Bülten No: 2019/73</span><table class="kurlarTablo" border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <th>
+                            <strong>Döviz Kodu</strong><br>Currency Code
+                        </th>
+                        <th>
+                            <strong>Birim</strong><br>Unit
+                        </th>
+                        <th>
+                            <strong>Döviz Cinsi</strong><br>Currency
+                        </th>
+                        <th>
+                            <strong>Döviz Alış</strong><br>Forex Buying
+                        </th>
+                        <th>
+                            <strong>Döviz Satış</strong><br>Forex Selling
+                        </th>
+
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="para kurkodu">
+                                <span class="kurgorsel" style="
+                     background-image: url('/kurlar/kurlar_tr_dosyalar/images/USD.gif');
+                 ">
+                                    &nbsp;
+                                </span>@item.CurrencyName/TRY
+
+                            </td>
+                            <td class="para birim">@item.CurrencyCode</td>
+                            <td class="para">@item.CurrencyName</td>
+                            <td class="deger">@item.Buying</td>
+                            <td class="deger">@item.Selling</td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
