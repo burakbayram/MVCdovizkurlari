@@ -21,7 +21,7 @@ namespace UserInterface.Controllers
 
         public ActionResult _doviz()
         {
-            XMLdata.TCMBDovizKuruAl();
+            XMLdataGet.TCMBDovizKuruAl();
       
             var liste = XMLdata.datagetir();
             var doviz = XMLdata.datagetir1();

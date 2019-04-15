@@ -11,10 +11,11 @@ namespace BLL
 {
     public class XMLdataGet
     {
+     static   RateContext db = new RateContext();
 
-        RateContext db = new RateContext();
-        public void TCMBDovizKuruAl()
+        public static void TCMBDovizKuruAl()
         {
+           
             db.ExchangeRateDatas.RemoveRange(db.ExchangeRateDatas.ToList());
            
             string today = "http://www.tcmb.gov.tr/kurlar/today.xml";
@@ -29,7 +30,7 @@ namespace BLL
             rateData.Currency.Unit = 1;
          
             rateData.CurrencyName= xmlDoc.SelectSingleNode("Tarih_Date/Currency[@Kod='USD']/CurrencyName").InnerXml;
-            rateData.CurrencyId = db.Currency.Find(1).Id;
+         //   rateData.CurrencyId = db.Currency.Find(1).Id;
             rateData.CreatedDate = DateTime.Now;
             db.ExchangeRateDatas.Add(rateData);
             db.SaveChanges();
@@ -60,12 +61,12 @@ namespace BLL
 
         public double dovizCevir(string name,double deger)
         {
-            if (name.StartsWith("E"))
+            if (name.StartsWith("E")&& name.StartsWith("e"))
             {
                 name = "EURO";
              
             }
-            else if (name.StartsWith("U"))
+            else if (name.StartsWith("U")&&name.StartsWith("u"))
             {
                 name = "US DOLLAR";
             }

@@ -10,8 +10,10 @@
         @Html.TextBox("Total", null, new { @placeHolder = "Total TL" })
     }
     else
+
     {
-        @Html.TextBox("Total", null, new { @placeHolder = ViewBag.Total+"TL" })
+        string text = ViewBag.Total;
+        @Html.TextBox("Total", text , new { @placeHolder = ViewBag.Total+"TL" })
     }
 
     <button class="btn btn-primary" >Çevir</button>
