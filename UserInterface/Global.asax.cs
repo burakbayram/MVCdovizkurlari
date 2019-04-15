@@ -25,7 +25,9 @@ namespace UserInterface
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             StartScheduler();
         }
-
+        /// <summary>
+        /// dsd
+        /// </summary>
         private static void StartScheduler()
         {
             ISchedulerFactory schedFact = new StdSchedulerFactory();
