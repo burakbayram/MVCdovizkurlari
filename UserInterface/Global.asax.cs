@@ -30,7 +30,7 @@ namespace UserInterface
             // get a scheduler, start the schedular before triggers or anything else  
             IScheduler sched = schedFact.GetScheduler();
             sched.Start();
-
+            ////dsdsd
             IJobDetail exchangeRateJob = JobBuilder.Create<CurrencyExchangeUpdate>()
                 .WithIdentity("job1", "group1")
                 .Build();
